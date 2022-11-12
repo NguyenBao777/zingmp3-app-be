@@ -128,3 +128,18 @@ exports.search = async (req, res) => {
 		return res.status(200).send({ success: false, message: "Data not found!" });
 	}
 };
+
+// get by category
+exports.getByCategory = async (req, res) => {
+	try {
+		const id = Number(req.params.id);
+		const data = await songModel.tbl_song.findAll({
+			where: { category_id: id },
+		});
+
+		return res.status(200).send({ success: true, message: data });
+	} catch (err) {
+		console.log(err);
+		return res.status(200).send({ success: false, message: "Data not found!" });
+	}
+};

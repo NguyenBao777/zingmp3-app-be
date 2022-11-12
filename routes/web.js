@@ -24,6 +24,7 @@ router.get("/song/gettop100", songController.getTop);
 router.put("/song/updatelistened", songController.updateListened);
 router.get("/song/getchart/:category_name", songController.getChart);
 router.get("/song/search/:keywords", songController.search);
+router.get("/song/getbycategory/:id", songController.getByCategory);
 /********************* Album API: ***************************/
 const uploadAlbum = require("../configs/multer/multerUploadAlbum");
 router.post("/album/addnew", uploadAlbum, albumController.addNew);
