@@ -10,5 +10,5 @@ app.use("/public", express.static(path.join(__dirname, "./public")));
 
 const webRoute = require("./routes/web");
 app.use("/", webRoute);
-
-app.listen(4000, () => console.log("Running on port 4000..."));
+const port = process.env.serverport || 4000;
+app.listen(port, () => console.log(`Running on port ${port}...`));
