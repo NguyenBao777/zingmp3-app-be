@@ -101,3 +101,20 @@ exports.search = async (req, res) => {
 		return res.status(200).send({ success: false, message: "Data not found!" });
 	}
 };
+
+// get all
+exports.getAll = async (req, res) => {
+	try {
+		const data = await userModel.tbl_user.findAll({
+			where: { user_role: "artist" },
+			limit: 10,
+		});
+		if (data.length > 0) {
+			return res.status(200).send({ success: true, message: data });
+		}
+		return res.status(200).send({ success: false, message: data });
+	} catch (err) {
+		console.log(err);
+		return res.status(200).send({ success: false, message: "Data not found!" });
+	}
+};

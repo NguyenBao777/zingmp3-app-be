@@ -16,6 +16,7 @@ router.post("/user/addnew", userController.addNew);
 router.put("/user/edit", uploadUser, userController.edit);
 router.get("/user/login/:username/:password", userController.login);
 router.get("/user/getone/:id", userController.getOne);
+router.get("/user/getall", userController.getAll);
 router.get("/user/search/:keywords", userController.search);
 /********************* songs API: ***************************/
 router.post("/song/addnew", uploadSong, songController.addNew);
@@ -25,6 +26,7 @@ router.put("/song/updatelistened", songController.updateListened);
 router.get("/song/getchart/:category_name", songController.getChart);
 router.get("/song/search/:keywords", songController.search);
 router.get("/song/getbycategory/:id", songController.getByCategory);
+router.get("/song/getbyartist/:id", songController.getByArtist);
 /********************* Album API: ***************************/
 const uploadAlbum = require("../configs/multer/multerUploadAlbum");
 router.post("/album/addnew", uploadAlbum, albumController.addNew);

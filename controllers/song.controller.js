@@ -143,3 +143,18 @@ exports.getByCategory = async (req, res) => {
 		return res.status(200).send({ success: false, message: "Data not found!" });
 	}
 };
+
+// get song by artist
+exports.getByArtist = async (req, res) => {
+	try {
+		const id = Number(req.params.id);
+		const data = await songModel.tbl_song.findAll({
+			where: { artist_id: id },
+		});
+
+		return res.status(200).send({ success: true, message: data });
+	} catch (err) {
+		console.log(err);
+		return res.status(200).send({ success: false, message: "Data not found!" });
+	}
+};
