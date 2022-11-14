@@ -62,3 +62,19 @@ exports.delete = async (req, res) => {
 		return res.status(200).send({ success: false, message: "data not found!" });
 	}
 };
+// edit
+exports.edit = async (req, res) => {
+	try {
+		const data = await postModel.tbl_post.findByPk(req.body.post_id);
+		if (data) {
+			await data.update({
+				post_content: req.body.post_content,
+				updated_at: new Date(),
+			});
+		}
+		return res.status(200).send({ success: true, message: data });
+	} catch (err) {
+		console.log(err);
+		return res.status(200).send({ success: false, message: "data not found!" });
+	}
+};
