@@ -4,6 +4,7 @@ const userController = require("../controllers/user.controller");
 const songController = require("../controllers/song.controller");
 const albumController = require("../controllers/album.controller");
 const categoryController = require("../controllers/category.controller");
+const postController = require("../controllers/post.controller");
 // Multer upload images
 const uploadSong = require("../configs/multer/multerUploadSong");
 
@@ -40,4 +41,11 @@ router.get("/album/search/:keywords", albumController.search);
 const uploadCategory = require("../configs/multer/multerUploadCategory");
 router.post("/category/addnew", uploadCategory, categoryController.addNew);
 router.get("/category/getall/:limit", categoryController.getAll);
+/********************* Post API: ***************************/
+const uploadPost = require("../configs/multer/multerUploadPost");
+router.post("/post/addnew", uploadPost, postController.addNew);
+router.get("/post/getall/:limit", postController.getAll);
+router.get("/post/getbyartist/:id", postController.getByArtistId);
+router.delete("/post/delete/:id", postController.delete);
+
 module.exports = router;
