@@ -21,12 +21,12 @@ router.get("/user/getall", userController.getAll);
 router.get("/user/search/:keywords", userController.search);
 /********************* songs API: ***************************/
 router.post("/song/addnew", uploadSong, songController.addNew);
-router.get("/song/getnew", songController.getNew);
+router.get("/song/getnew/:pages/:limit", songController.getNew);
 router.get("/song/gettop100", songController.getTop);
 router.put("/song/updatelistened", songController.updateListened);
 router.get("/song/getchart/:category_name", songController.getChart);
 router.get("/song/search/:keywords", songController.search);
-router.get("/song/getbycategory/:id", songController.getByCategory);
+router.get("/song/getbycategory/:id/:pages/:limit", songController.getByCategory);
 router.get("/song/getbyartist/:id", songController.getByArtist);
 /********************* Album API: ***************************/
 const uploadAlbum = require("../configs/multer/multerUploadAlbum");

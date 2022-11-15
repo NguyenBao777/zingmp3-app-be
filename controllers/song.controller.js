@@ -30,12 +30,16 @@ exports.addNew = async (req, res) => {
 
 exports.getNew = async (req, res) => {
 	try {
-		const data = await songModel.tbl_song.findAll({
+		const pages = Number(req.params.pages);
+		const limit = Number(req.params.limit);
+		const offset = (pages - 1) * limit;
+		const { count, rows } = await songModel.tbl_song.findAndCountAll({
 			order: [["id", "DESC"]],
-			limit: 10,
+			limit: limit,
+			offset: offset,
 		});
-		if (data.length > 0) {
-			res.status(200).send({ success: true, message: data });
+		if (rows.length > 0) {
+			res.status(200).send({ success: true, message: rows, total: count });
 		} else {
 			res.status(200).send({ success: false, message: "Data not found!" });
 		}
@@ -133,11 +137,16 @@ exports.search = async (req, res) => {
 exports.getByCategory = async (req, res) => {
 	try {
 		const id = Number(req.params.id);
-		const data = await songModel.tbl_song.findAll({
+		const limit = Number(req.params.limit);
+		const pages = Number(req.params.pages);
+		const offset = (pages - 1) * limit;
+		const { count, rows } = await songModel.tbl_song.findAndCountAll({
 			where: { category_id: id },
+			limit: limit,
+			offset: offset,
 		});
 
-		return res.status(200).send({ success: true, message: data });
+		return res.status(200).send({ success: true, message: rows, total: count });
 	} catch (err) {
 		console.log(err);
 		return res.status(200).send({ success: false, message: "Data not found!" });
