@@ -44,7 +44,7 @@ router.get("/category/getall/:limit", categoryController.getAll);
 /********************* Post API: ***************************/
 const uploadPost = require("../configs/multer/multerUploadPost");
 router.post("/post/addnew", uploadPost, postController.addNew);
-router.get("/post/getall/:limit", postController.getAll);
+router.get("/post/getall/:limit/:pages", postController.getAll);
 router.get("/post/getbyartist/:id", postController.getByArtistId);
 router.delete("/post/delete/:id", postController.delete);
 router.put("/post/edit", postController.edit);

@@ -24,11 +24,14 @@ exports.addNew = async (req, res) => {
 exports.getAll = async (req, res) => {
 	try {
 		const limit = Number(req.params.limit);
-		const data = await postModel.tbl_post.findAll({
+		const pages = Number(req.params.pages);
+		const offset = limit * (pages - 1);
+		const { count, rows } = await postModel.tbl_post.findAndCountAll({
 			limit: limit,
+			offset: offset,
 		});
 
-		return res.status(200).send({ success: true, message: data });
+		return res.status(200).send({ success: true, message: rows });
 	} catch (err) {
 		console.log(err);
 		return res.status(200).send({ success: false, message: "data not found!" });
