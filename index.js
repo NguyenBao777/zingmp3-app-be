@@ -15,7 +15,7 @@ app.use("/public", express.static(path.join(__dirname, "./public")));
 
 const webRoute = require("./routes/web");
 app.get("/", (req, res) => {
-	return res.status(200).send({ message: "server gdent-app" });
+	return res.status(200).send({ message: "server zingmp3-app" });
 });
 app.use("/", webRoute);
 const port = process.env.serverport || 4000;
