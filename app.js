@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 const bodyParser = require("body-parser");
-app.use(cors());
+const cors = require("cors");
+const corsOptions = {
+	origin: "*",
+	credentials: true, //access-control-allow-credentials:true
+	optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.json());
 const path = require("path");
