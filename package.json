@@ -2,11 +2,11 @@
   "name": "server-zingmp3",
   "version": "1.0.0",
   "description": "zing mp3 app",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "start": "nodemon app.js"
+    "dev": "nodemon index.js",
+    "start": "nodemon index.js"
   },
   "author": "Nguyễn Quốc Bảo Bảo",
   "license": "ISC",
